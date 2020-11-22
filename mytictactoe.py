@@ -32,11 +32,13 @@ class TicTacToe:
 
     def play(self, player):
         self.player = player
+        c = 0
         valid = True
-        self.pos = input("{}'s Turn! Enter a Position(1 to 9)\n".format(self.player)).strip()
         while valid:
             try:
-                self.pos = int(self.pos)
+                if c == 0:
+                    self.pos = int(input("{}'s Turn! Enter a Position(1 to 9)\n".format(self.player)).strip())
+                    c += 1
                 if self.pos < 1 or self.pos > 9:
                     raise IndexOutOfRange("Index Out of Range")
                 elif self.__board[self.pos - 1] != '_':
@@ -115,4 +117,3 @@ class ValueAlreadyPresent(ValueError):
 
 if __name__ == '__main__':
     B = TicTacToe('X', 'O')
-    print(B._TicTacToe__board)
